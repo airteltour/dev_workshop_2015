@@ -57,7 +57,7 @@ return [
 			'host'      => 'localhost',
 			'database'  => 'workshop',
 			'username'  => 'workshop',
-			'password'  => 'workshop43@^',
+			'password'  => 'workshop)(!@',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
