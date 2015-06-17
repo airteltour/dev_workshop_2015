@@ -234,7 +234,7 @@
                 <ul class="timeline">
                     <li>
                         <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="img/about/1.jpg" alt="" style="height: 156px;;">
+                            <img class="img-circle img-responsive" src="img/about/1.jpg" alt="" style="height: 100%;">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
@@ -248,7 +248,7 @@
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="img/about/2.jpg" alt="" style="height: 156px;;">
+                            <img class="img-circle img-responsive" src="img/about/2.jpg" alt="" style="height: 100%;">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
@@ -262,7 +262,7 @@
                     </li>
                     <li>
                         <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="img/about/3.jpg" alt="" style="height: 156px;;">
+                            <img class="img-circle img-responsive" src="img/about/3.jpg" alt="" style="height: 100%;">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
@@ -276,7 +276,7 @@
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="img/about/4.jpg" alt="" style="height: 156px;;">
+                            <img class="img-circle img-responsive" src="img/about/4.jpg" alt="" style="height: 100%;">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
@@ -290,7 +290,7 @@
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
-                            <img class="img-circle img-responsive" src="img/about/5.jpg" alt="" style="height: 156px;;">
+                            <img class="img-circle img-responsive" src="img/about/5.jpg" alt="" style="height: 100%;">
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
