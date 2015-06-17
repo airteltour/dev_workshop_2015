@@ -18,6 +18,7 @@ class CreatePhotoTable extends Migration {
             $table->string('title');
             $table->string('description');
             $table->string('file_path');
+            $table->string('delete_chars');
             $table->timestamps();
         });
     }
