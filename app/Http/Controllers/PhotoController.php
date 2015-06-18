@@ -46,14 +46,13 @@ class PhotoController extends Controller {
 	public function store(Request $request)
 	{
 
-        $fileName   = $request->file('photo')->getClientOriginalName();
-        $uploadPath = public_path() . '/img/photo';
-
-        if(!file_exists($uploadPath))   mkdir( $uploadPath, 0777 );
-
-        $request->file('photo')->move( $uploadPath, $fileName );
-
         if( $request->input('insertPassword') == '0619' ) {
+            $fileName   = $request->file('photo')->getClientOriginalName();
+            $uploadPath = public_path() . '/img/photo';
+
+            if(!file_exists($uploadPath))   mkdir( $uploadPath, 0777 );
+
+            $request->file('photo')->move( $uploadPath, $fileName );
 
             $photo = new Photo;
 
