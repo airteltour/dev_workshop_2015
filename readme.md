@@ -13,8 +13,8 @@ chmod 777 dev/storage
 
 ## Create Mysql Database and User
 ```
-grant all privileges on `workshop%`.* to workshop@localhost identified by 'workshop)(!@' with grant option;
-create database workshop;
+mysql> grant all privileges on `workshop%`.* to workshop@localhost identified by 'workshop)(!@' with grant option;
+mysql> create database workshop;
 ```
 
 ## Database Initalize
