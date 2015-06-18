@@ -13,6 +13,11 @@
 
 Route::get('/', 'IndexController@index');
 
+Route::get('/photo/reg', 'PhotoController@photo_upload_page');
+
+Route::resource('/photo', 'PhotoController');
+
+
 /*
 Route::get('home', 'HomeController@index');
 
