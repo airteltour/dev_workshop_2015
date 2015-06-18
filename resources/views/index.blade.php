@@ -7,31 +7,6 @@
 
     $(document).ready(function(){
 
-        $.getJSON('/photo', function(res){
-
-            $(res).each(function(idx, val){
-
-                var appendHtml = '<div class="col-md-4 col-sm-6 portfolio-item">';
-
-                appendHtml += '<a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">';
-                appendHtml += '<div class="portfolio-hover">';
-                appendHtml += '<div class="portfolio-hover-content">';
-                appendHtml += '</div>';
-                appendHtml += '</div>';
-                appendHtml += '<img src="/img/photo/'+val.file_path+'" class="img-responsive" alt="">';
-                appendHtml += '</a>';
-                appendHtml += '<div class="portfolio-caption">';
-                appendHtml += '<h4>'+val.title+'</h4>';
-                appendHtml += '<p class="text-muted">'+val.desc+'</p>';
-                appendHtml += '</div>';
-                appendHtml += '</div>';
-
-                $('#photoList').append( appendHtml );
-
-            });
-
-        });
-
     });
 
 </script>
@@ -172,7 +147,24 @@
                 <h3 class="section-subheading text-muted">아름다운 추억들 !</h3>
             </div>
         </div>
-        <div class="row" id="photoList">
+        <div class="row">
+
+            @foreach( $photoList as $idx => $photo )
+            <div class="col-md-4 col-sm-6 portfolio-item">
+
+            <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                <div class="portfolio-hover">
+                    <div class="portfolio-hover-content">
+                        </div>';
+                    </div>';
+                <img src="/img/photo/{{$photo->file_path}}" class="img-responsive" alt="">
+                </a>
+            <div class="portfolio-caption">
+                <h4>{{$photo->title}}</h4>
+                <p class="text-muted">{{$photo->desc}}</p>
+                </div>
+            </div>
+            @endforeach
 
         </div>
     </div>

@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Photo;
+
 class IndexController extends Controller {
 
     /*
@@ -30,7 +32,15 @@ class IndexController extends Controller {
      */
     public function index()
     {
-        return view('index');
+
+        return view('index', [ 'photoList' => Photo::all() ] );
+
+    }
+
+    public function photo_upload_page(){
+
+        return view('photo_upload');
+
     }
 
 }

@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 
 class PhotoController extends Controller {
 
-    public function photo_upload_page(){
-
-        return view('photo_upload');
-
-    }
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -21,10 +15,6 @@ class PhotoController extends Controller {
 	 */
 	public function index()
 	{
-
-		$photoList = Photo::all();
-
-        return json_encode( $photoList );
 
 	}
 
