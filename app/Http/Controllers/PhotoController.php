@@ -1,8 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Photo;
-
 use Illuminate\Http\Request;
 
 class PhotoController extends Controller {
@@ -38,7 +36,7 @@ class PhotoController extends Controller {
         if( $request->input('insertPassword') == '0619' ) {
 
             $fileName   = $request->file('photo')->getClientOriginalName();
-            $uploadPath = public_path() . '/img/photo';
+            $uploadPath = public_path('img/photo/');
 
             if(!file_exists($uploadPath))   mkdir( $uploadPath, 0777 );
 
@@ -106,6 +104,8 @@ class PhotoController extends Controller {
         if($request->input('deletePassword') == '0619') {
 
             $photo = Photo::find($id);
+
+            @unlink( public_path('img/photo/') . $photo->file_path );
 
             if ($photo->delete())   echo 'true';
             else                    echo 'fail';
