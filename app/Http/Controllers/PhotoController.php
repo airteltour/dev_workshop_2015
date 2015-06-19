@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Photo;
 
 use Illuminate\Http\Request;
@@ -37,6 +36,7 @@ class PhotoController extends Controller {
 	{
 
         if( $request->input('insertPassword') == '0619' ) {
+
             $fileName   = $request->file('photo')->getClientOriginalName();
             $uploadPath = public_path() . '/img/photo';
 
@@ -50,8 +50,10 @@ class PhotoController extends Controller {
             $photo->desc        = $request->input('desc');
             $photo->file_path   = $fileName;
 
-            if ($photo->save()) return "ok";
-            else                return "fail";
+            if ($photo->save()) echo "ok";
+            else                echo "fail";
+
+            Redirect::to('/');
 
         }else{
 

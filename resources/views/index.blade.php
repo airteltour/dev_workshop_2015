@@ -7,6 +7,30 @@
 
     $(document).ready(function(){
 
+        // show
+        $('a.photo').on('click', function(){
+
+
+            $('#photoModal').data('idx', $(this).data('idx'));
+
+            $('#photoModal #title').text( $(this).data('title') );
+            $('#photoModal #desc').text( $(this).data('desc') );
+
+            $('#photoModal #photoPath').attr( 'src', $(this).attr('src') );
+
+            $('#photoModal').modal('show');
+
+        });
+
+        // delete
+        $('#photoModal #photoDelete').on('click', function(){
+
+            $.post('/photo', {}, function(){
+
+            });
+
+        });
+
     });
 
 </script>
@@ -152,13 +176,13 @@
             @foreach( $photoList as $idx => $photo )
             <div class="col-md-4 col-sm-6 portfolio-item">
 
-            <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+            <a href="#" class="portfolio-link photo" data-toggle="modal" data-idx="{{$photo->id}}" data-title="{{$photo->title}}" data-desc="{{$photo->desc}}">
                 <div class="portfolio-hover">
                     <div class="portfolio-hover-content">
-                        </div>';
-                    </div>';
+                        </div>
+                    </div>
                 <img src="/img/photo/{{$photo->file_path}}" class="img-responsive" alt="">
-                </a>
+            </a>
             <div class="portfolio-caption">
                 <h4>{{$photo->title}}</h4>
                 <p class="text-muted">{{$photo->desc}}</p>
@@ -478,8 +502,7 @@
 <!-- Portfolio Modals -->
 <!-- Use the modals below to showcase details about your portfolio projects! -->
 
-<!-- Portfolio Modal 6 -->
-<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="portfolio-modal modal fade" id="photoModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content">
         <div class="close-modal" data-dismiss="modal">
             <div class="lr">
@@ -492,12 +515,11 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
                         <!-- Project Details Go Here -->
-                        <h2>Project Name</h2>
-                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                        <img class="img-responsive img-centered" src="img/portfolio/dreams-preview.png" alt="">
-                        <p>Dreams is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Dreams is a modern one page web template designed for almost any purpose. It’s a beautiful template that’s designed with the Bootstrap framework in mind.</p>
-                        <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/dreams-free-one-page-web-template/">FreebiesXpress.com</a>.</p>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        <h2 id="title">TITLE</h2>
+                        <img id="photoPath" class="img-responsive img-centered" src="img/portfolio/dreams-preview.png" alt="">
+                        <p id="desc">DESC</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
+                        <button type="button" class="btn btn-danger" id="photoDelete" data-dismiss="modal"><i class="fa fa-times"></i> Delete </button>
                     </div>
                 </div>
             </div>
