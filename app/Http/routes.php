@@ -13,7 +13,7 @@
 
 Route::get('/', 'IndexController@index');
 
-Route::get('/reg', 'IndexController@photo_upload_page');
+Route::get('/upload', 'PhotoController@upload');
 
 Route::resource('/photo', 'PhotoController');
 

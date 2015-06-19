@@ -37,10 +37,4 @@ class IndexController extends Controller {
 
     }
 
-    public function photo_upload_page(){
-
-        return view('photo_upload');
-
-    }
-
 }

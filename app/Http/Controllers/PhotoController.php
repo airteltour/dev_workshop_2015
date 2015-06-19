@@ -118,4 +118,11 @@ class PhotoController extends Controller {
 
 	}
 
+
+    public function upload(){
+
+        return view('photo_upload');
+
+    }
+
 }
