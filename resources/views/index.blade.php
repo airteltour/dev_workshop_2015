@@ -531,7 +531,7 @@
             $('#photoModal #title').text( $(this).data('title') );
             $('#photoModal #desc').text( $(this).data('desc') );
 
-            $('#photoModal #photoPath').attr( 'src', $(this).attr('src') );
+            $('#photoModal #photoPath').attr( 'src', '/img/photo/' + $(this).attr('src') );
 
             $('#photoModal').modal('show');
 

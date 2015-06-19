@@ -50,10 +50,8 @@ class PhotoController extends Controller {
             $photo->desc        = $request->input('desc');
             $photo->file_path   = $fileName;
 
-            if ($photo->save()) echo "ok";
-            else                echo "fail";
-
-            return redirect('/');
+            if ($photo->save()) return redirect('/');
+            else                return "fail";
 
         }else{
 
