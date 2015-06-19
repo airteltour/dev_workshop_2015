@@ -540,7 +540,9 @@
         // delete
         $('#photoModal').on('click', '#photoDelete', function(e){
 
-            $.post('/photo/' + $(e.delegateTarget).data('id'), { _method : 'DELETE' }, function(res){
+            var deletePassword = prompt('삭제 비번 입력');
+
+            $.post('/photo/' + $(e.delegateTarget).data('id'), { _method : 'DELETE', deletePassword : deletePassword }, function(res){
 
                 if(res){
 
