@@ -469,7 +469,7 @@
 <!-- Portfolio Modals -->
 <!-- Use the modals below to showcase details about your portfolio projects! -->
 
-<div class="portfolio-modal modal fade" id="photoModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="portfolio-modal modal fade" id="photoModal" tabindex="-1" role="dialog" aria-hidden="true" data-id="">
     <div class="modal-content">
         <div class="close-modal" data-dismiss="modal">
             <div class="lr">
@@ -544,14 +544,14 @@
 
             $.post('/photo/' + $(e.delegateTarget).data('id'), { _method : 'DELETE', deletePassword : deletePassword }, function(res){
 
-                if(res){
+                if(res == 'true'){
 
                     alert('ok');
                     location.reload();
 
                 }else{
 
-                    alert('fail');
+                    alert(res);
 
                 }
 
