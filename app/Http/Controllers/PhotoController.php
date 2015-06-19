@@ -101,7 +101,7 @@ class PhotoController extends Controller {
 	public function destroy(Request $request, $id)
 	{
 
-        if($request->input('deletePassword') == '0619') {
+        if( $request->input('deletePassword') == '0619' ) {
 
             $photo = Photo::find($id);
 

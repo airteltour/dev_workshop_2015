@@ -142,7 +142,7 @@
             @foreach( $photoList as $idx => $photo )
             <div class="col-md-4 col-sm-6 portfolio-item">
 
-            <a href="#" class="portfolio-link photo" data-toggle="modal" data-idx="{{$photo->id}}" data-title="{{$photo->title}}" data-desc="{{$photo->desc}}">
+            <a href="#" class="portfolio-link photo" data-toggle="modal" data-id="{{$photo->id}}" data-title="{{$photo->title}}" data-desc="{{$photo->desc}}">
                 <div class="portfolio-hover">
                     <div class="portfolio-hover-content">
                         </div>
@@ -525,12 +525,12 @@
         // show
         $('a.photo').on('click', function(){
 
-            $('#photoModal').data('idx', $(this).data('idx'));
+            $('#photoModal').data('id', $(this).data('id'));
 
             $('#photoModal #title').text( $(this).data('title') );
             $('#photoModal #desc').text( $(this).data('desc') );
 
-            $('#photoModal #photoPath').attr( 'src', '/img/photo/' + $(this).attr('src') );
+            $('#photoModal #photoPath').attr( 'src', $(this).find('img').attr('src') );
 
             $('#photoModal').modal('show');
 
