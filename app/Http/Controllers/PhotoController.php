@@ -53,7 +53,7 @@ class PhotoController extends Controller {
             if ($photo->save()) echo "ok";
             else                echo "fail";
 
-            Redirect::to('/');
+            return redirect('/');
 
         }else{
 
@@ -104,7 +104,11 @@ class PhotoController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$photo = Photo::find( $id );
+
+        if( $photo->delete() )  echo 1;
+        else                    echo 0;
+
 	}
 
 }

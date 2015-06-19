@@ -1,40 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.min.js"></script>
-
-<script>
-
-    $(document).ready(function(){
-
-        // show
-        $('a.photo').on('click', function(){
-
-
-            $('#photoModal').data('idx', $(this).data('idx'));
-
-            $('#photoModal #title').text( $(this).data('title') );
-            $('#photoModal #desc').text( $(this).data('desc') );
-
-            $('#photoModal #photoPath').attr( 'src', $(this).attr('src') );
-
-            $('#photoModal').modal('show');
-
-        });
-
-        // delete
-        $('#photoModal #photoDelete').on('click', function(){
-
-            $.post('/photo', {}, function(){
-
-            });
-
-        });
-
-    });
-
-</script>
-
 <head>
 
     <meta charset="utf-8">
@@ -544,6 +510,55 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/agency.js"></script>
+
+<script>
+
+    //csrf tokken
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(document).ready(function(){
+
+        // show
+        $('a.photo').on('click', function(){
+
+            $('#photoModal').data('idx', $(this).data('idx'));
+
+            $('#photoModal #title').text( $(this).data('title') );
+            $('#photoModal #desc').text( $(this).data('desc') );
+
+            $('#photoModal #photoPath').attr( 'src', $(this).attr('src') );
+
+            $('#photoModal').modal('show');
+
+        });
+
+        // delete
+        $('#photoModal').on('click', '#photoDelete', function(e){
+
+            $.post('/photo/' + $(e.delegateTarget).data('id'), { _method : 'DELETE' }, function(res){
+
+                if(res){
+
+                    alert('ok');
+                    location.reload();
+
+                }else{
+
+                    alert('fail');
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
 
 </body>
 
