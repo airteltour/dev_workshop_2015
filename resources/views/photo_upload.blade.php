@@ -42,11 +42,11 @@
     </div>
     <div class="form-group">
         <label for="title">제목</label>
-        <input type="text" class="form-control" id="title" name="title" pplaceholder="제목">
+        <input type="text" class="form-control" id="title" name="title" placeholder="제목">
     </div>
     <div class="form-group">
         <label for="desc">내용</label>
-        <textarea type="text" class="form-control" id="desc" name="desc" pplaceholder="내용"></textarea>
+        <textarea type="text" class="form-control" id="desc" name="desc" placeholder="내용"></textarea>
     </div>
     <div class="form-group">
         <label for="photo">파일 업로드</label>

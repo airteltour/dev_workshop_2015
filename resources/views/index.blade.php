@@ -1,41 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.min.js"></script>
-
-<script>
-
-    $(document).ready(function(){
-
-        $.getJSON('/photo', function(res){
-
-            $(res).each(function(idx, val){
-
-                var appendHtml = '<div class="col-md-4 col-sm-6 portfolio-item">';
-
-                appendHtml += '<a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">';
-                appendHtml += '<div class="portfolio-hover">';
-                appendHtml += '<div class="portfolio-hover-content">';
-                appendHtml += '</div>';
-                appendHtml += '</div>';
-                appendHtml += '<img src="/img/photo/'+val.file_path+'" class="img-responsive" alt="">';
-                appendHtml += '</a>';
-                appendHtml += '<div class="portfolio-caption">';
-                appendHtml += '<h4>'+val.title+'</h4>';
-                appendHtml += '<p class="text-muted">'+val.desc+'</p>';
-                appendHtml += '</div>';
-                appendHtml += '</div>';
-
-                $('#photoList').append( appendHtml );
-
-            });
-
-        });
-
-    });
-
-</script>
-
 <head>
 
     <meta charset="utf-8">
@@ -43,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>AIRTEL.DEV WORKSHOP SOTRY</title>
 
@@ -172,7 +137,24 @@
                 <h3 class="section-subheading text-muted">아름다운 추억들 !</h3>
             </div>
         </div>
-        <div class="row" id="photoList">
+        <div class="row">
+
+            @foreach( $photoList as $idx => $photo )
+            <div class="col-md-4 col-sm-6 portfolio-item">
+
+            <a href="#" class="portfolio-link photo" data-toggle="modal" data-id="{{$photo->id}}" data-title="{{$photo->title}}" data-desc="{{$photo->desc}}">
+                <div class="portfolio-hover">
+                    <div class="portfolio-hover-content">
+                        </div>
+                    </div>
+                <img src="/img/photo/{{$photo->file_path}}" class="img-responsive" alt="">
+            </a>
+            <div class="portfolio-caption">
+                <h4>{{$photo->title}}</h4>
+                <p class="text-muted">{{$photo->desc}}</p>
+                </div>
+            </div>
+            @endforeach
 
         </div>
     </div>
@@ -486,8 +468,7 @@
 <!-- Portfolio Modals -->
 <!-- Use the modals below to showcase details about your portfolio projects! -->
 
-<!-- Portfolio Modal 6 -->
-<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="portfolio-modal modal fade" id="photoModal" tabindex="-1" role="dialog" aria-hidden="true" data-id="">
     <div class="modal-content">
         <div class="close-modal" data-dismiss="modal">
             <div class="lr">
@@ -500,12 +481,11 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
                         <!-- Project Details Go Here -->
-                        <h2>Project Name</h2>
-                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                        <img class="img-responsive img-centered" src="img/portfolio/dreams-preview.png" alt="">
-                        <p>Dreams is a free PSD web template built by <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Dreams is a modern one page web template designed for almost any purpose. It’s a beautiful template that’s designed with the Bootstrap framework in mind.</p>
-                        <p>You can download the PSD template in this portfolio sample item at <a href="http://freebiesxpress.com/gallery/dreams-free-one-page-web-template/">FreebiesXpress.com</a>.</p>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                        <h2 id="title">TITLE</h2>
+                        <img id="photoPath" class="img-responsive img-centered" src="img/portfolio/dreams-preview.png" alt="">
+                        <p id="desc">DESC</p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
+                        <button type="button" class="btn btn-danger" id="photoDelete" data-dismiss="modal"><i class="fa fa-times"></i> Delete </button>
                     </div>
                 </div>
             </div>
@@ -530,6 +510,57 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="js/agency.js"></script>
+
+<script>
+
+    //csrf tokken
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(document).ready(function(){
+
+        // show
+        $('a.photo').on('click', function(){
+
+            $('#photoModal').data('id', $(this).data('id'));
+
+            $('#photoModal #title').text( $(this).data('title') );
+            $('#photoModal #desc').text( $(this).data('desc') );
+
+            $('#photoModal #photoPath').attr( 'src', $(this).find('img').attr('src') );
+
+            $('#photoModal').modal('show');
+
+        });
+
+        // delete
+        $('#photoModal').on('click', '#photoDelete', function(e){
+
+            var deletePassword = prompt('삭제 비번 입력');
+
+            $.post('/photo/' + $(e.delegateTarget).data('id'), { _method : 'DELETE', deletePassword : deletePassword }, function(res){
+
+                if(res == 'true'){
+
+                    alert('ok');
+                    location.reload();
+
+                }else{
+
+                    alert(res);
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
 
 </body>
 
