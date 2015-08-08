@@ -25,7 +25,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://dev.airteltour.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -143,6 +143,12 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		
+		/*
+		 * Image Provider
+		 */
+		'Folklore\Image\ImageServiceProvider',
+
 
 	],
 
@@ -191,6 +197,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Image'     => 'Folklore\Image\Facades\Image',
+
 
 	],
 

@@ -147,7 +147,7 @@
                     <div class="portfolio-hover-content">
                         </div>
                     </div>
-                <img src="/img/photo/{{$photo->file_path}}" class="img-responsive" alt="">
+                <img src="<?=Image::url("/img/photo/".$photo->file_path,1000,700)?>" class="img-responsive" alt="">
             </a>
             <div class="portfolio-caption">
                 <h4>{{$photo->title}}</h4>
